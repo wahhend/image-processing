@@ -98,7 +98,7 @@ def gray_level_slicing_preserve(image, start, stop, high):
 def bit_plane_slicing(image, index):
     image = rgb_to_gray(image)
     image = 255 * image
-    image = numpy.uint8(image)    
+    image = numpy.uint8(image)
     image_dimension = numpy.shape(image)
     
     for i in range(image_dimension[0]):
