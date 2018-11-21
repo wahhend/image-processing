@@ -40,56 +40,17 @@ def represent_4_direction(image):
         # print(current)
     return representation
 
-
-def nol(akhir):
-    switcher = {
-        0: 0,
-        1: 1,
-        2: 2,
-        3: 3
-    }
-    return switcher.get(akhir, 0)
-
-
-def satu(akhir):
-    switcher = {
-        0: 3,
-        1: 0,
-        2: 1,
-        3: 2
-    }
-    return switcher.get(akhir, 0)
-
-
-def dua(akhir):
-    switcher = {
-        0: 2,
-        1: 3,
-        2: 0,
-        3: 1
-    }
-    return switcher.get(akhir, 0)
-
-
-def tiga(akhir):
-    switcher = {
-        0: 1,
-        1: 2,
-        2: 3,
-        3: 0
-    }
-    return switcher.get(akhir, 0)
-
-
 def diff(current, next):
-    switcher = {
-        0: nol(next),
-        1: satu(next),
-        2: dua(next),
-        3: tiga(next),
-    }
-    return switcher.get(current, )
-
+    x = [0, 1, 2, 3, 0, 1, 2] # pengganti direction, 1 ke 3 butuh berapa step ? 2 step
+    step = 0
+    start = x.index(current)
+    finish = next
+    while True:
+        if x[start] == finish:
+            break
+        start += 1
+        step += 1
+    return step
 
 def compare(source, image):
     originalChainCode = represent_4_direction(source)
