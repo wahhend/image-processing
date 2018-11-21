@@ -41,14 +41,14 @@ def represent_4_direction(image):
     return representation
 
 def diff(current, next):
-    x = [0, 1, 2, 3, 0, 1, 2] # pengganti direction, 1 ke 3 butuh berapa step ? 2 step
+    x = [3, 2, 1, 0] # pengganti direction, 1 ke 3 butuh berapa step ? 2 step
     step = 0
     start = x.index(current)
     finish = next
     while True:
         if x[start] == finish:
             break
-        start += 1
+        start -= 1
         step += 1
     return step
 
