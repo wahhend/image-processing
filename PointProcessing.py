@@ -3,11 +3,11 @@ import numpy
 def rgb_to_gray(image):
     red = image[:,:,0]
     green = image[:,:,1]
-    blue = image[:,:,0]
+    blue = image[:,:,2]
 
     #gray = (numpy.max(red, green, blue) + numpy.min(red, green, blue)) / 2
-    gray = (red + green + blue)/3
-    #gray = 0.21*red + 0.71*green + 0.07*blue
+    # gray = (red + green + blue)/3
+    gray = 0.21*red + 0.71*green + 0.07*blue
 
     return gray
 
