@@ -16,32 +16,42 @@ def represent_4_direction(image):
     return_to_start = False
     current = [start[0], start[1]]
     while(not return_to_start):
+        valid = False
+
         if image[current[0]][current[1]+1] > 128 and [current[0], current[1]+1] not in trace:
             representation.append(0)
             current[1] += 1
             trace.append([current[0], current[1]])
+            valid = True
 
         elif image[current[0]-1][current[1]] > 128 and [current[0]-1, current[1]] not in trace:
             representation.append(1)
             current[0] -= 1
             trace.append([current[0], current[1]])
+            valid = True
 
         elif image[current[0]][current[1]-1] > 128 and [current[0], current[1]-1] not in trace:
             representation.append(2)
             current[1] -= 1
             trace.append([current[0], current[1]])
+            valid = True
 
         elif image[current[0]+1][current[1]] > 128 and [current[0]+1, current[1]] not in trace:
             representation.append(3)
             current[0] += 1
             trace.append([current[0], current[1]])
+            valid = True
+
+        # if not valid:
+        #     representation.pop()
+            # current 
 
         return_to_start = (start == current)
         # print(current)
     return representation
 
 def diff(current, next):
-    x = [3, 2, 1, 0] # pengganti direction, 1 ke 3 butuh berapa step ? 2 step
+    x = [3, 2, 1, 0]
     step = 0
     start = x.index(current)
     finish = next
@@ -60,7 +70,7 @@ def compare(source, image):
                     for i in range(0, len(originalChainCode)-1)]
     rotatedDiff = [diff(rotatedChainCode[i], rotatedChainCode[i+1])
                    for i in range(0, len(rotatedChainCode)-1)]
-
+    
     originalDiff.append(diff(originalChainCode[len(originalChainCode) - 1], originalChainCode[0]))
     rotatedDiff.append(diff(rotatedChainCode[len(rotatedChainCode) - 1], rotatedChainCode[0]))
 
@@ -72,5 +82,6 @@ def compare(source, image):
         originalDiffCode += str(code)
     for rd in rotatedDiff:
         rotatedDiffCode += str(rd)
-
-    return (rotatedDiffCode in originalDiffCode)
+    print(originalDiffCode)
+    print(rotatedDiffCode)
+    return rotatedDiffCode in originalDiffCode

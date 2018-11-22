@@ -8,18 +8,19 @@ def generate_mask(i):
     return mask
 
 
-def segmentation(mask, image):
-    mask = generate_mask(mask)
+def segmentation(mask_size, image):
+    mask = generate_mask(mask_size)
     [m, n] = numpy.shape(image)
     newImg = numpy.zeros([m, n])
-
-    for i in range(1, m-2):
-        for j in range(1, n-2):
-            value = numpy.sum(mask * image[i-1:i+2, j-1:j+2])
+    leftBoundary = int(mask_size/2)
+    rightBoundary = leftBoundary + 1
+    for i in range(leftBoundary, m-rightBoundary):
+        for j in range(leftBoundary, n-rightBoundary):
+            value = numpy.sum(mask * image[i-leftBoundary:i+rightBoundary, j-leftBoundary:j+rightBoundary])
             if value < 0:
                 value = 0
             elif value > 255:
                 value = 255
-            
+
             newImg[i][j] = value
     return newImg
