@@ -59,7 +59,7 @@ def compare(source, image):
     originalDiff = [diff(originalChainCode[i], originalChainCode[i+1])
                     for i in range(0, len(originalChainCode)-1)]
     rotatedDiff = [diff(rotatedChainCode[i], rotatedChainCode[i+1])
-                   for i in range(0, len(rotatedChainCode)-1)]
+                    for i in range(0, len(rotatedChainCode)-1)]
 
     originalDiff.append(diff(originalChainCode[len(originalChainCode) - 1], originalChainCode[0]))
     rotatedDiff.append(diff(rotatedChainCode[len(rotatedChainCode) - 1], rotatedChainCode[0]))
@@ -72,5 +72,13 @@ def compare(source, image):
         originalDiffCode += str(code)
     for rd in rotatedDiff:
         rotatedDiffCode += str(rd)
+
+    print("Segmentation image (Original)")
+    print("Chain Code :", originalChainCode)
+    print("Diff :", originalDiff)
+
+    print("Segmentation image (Rotated)")
+    print("Chain Code :", rotatedChainCode)
+    print("Diff :", rotatedDiff)
 
     return (rotatedDiffCode in originalDiffCode)
