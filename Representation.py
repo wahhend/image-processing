@@ -82,6 +82,13 @@ def compare(source, image):
         originalDiffCode += str(code)
     for rd in rotatedDiff:
         rotatedDiffCode += str(rd)
-    print(originalDiffCode)
-    print(rotatedDiffCode)
-    return rotatedDiffCode in originalDiffCode
+
+    print("Segmentation image (Original)")
+    print("Chain Code :", originalChainCode)
+    print("Diff :", originalDiff)
+
+    print("Segmentation image (Rotated)")
+    print("Chain Code :", rotatedChainCode)
+    print("Diff :", rotatedDiff)
+
+    return (rotatedDiffCode in originalDiffCode)

@@ -1,14 +1,11 @@
-import PointProcessing as pp
-import InterImageOperation as imageopr
 import matplotlib.pyplot as pyplot
 # import MorphologicalProcessing as morph
 import Segmentation as segment
 import Representation as rep
 import numpy
-import PIL
+from PIL import Image
 
-im = PIL.Image.open("image/rectangle.jpg")
-
+im = Image.open("image/rectangle.jpg")
 im = numpy.array(im)
 # im = pp.rgb_to_gray(im)
 segmented = segment.segmentation(3, im)
@@ -23,7 +20,9 @@ f.add_subplot(1,2,2)
 pyplot.title('segmented')
 pyplot.imshow(rotated, cmap = pyplot.get_cmap('gray'))
 
-# pyplot.show()
+compared = rep.compare(im, rotated)
+print("\nDiff original dan rotated : ", end="")
+print( "SAMA" if compared else "BEDA")
 
 # rep.compare(im, rotated)
-print(rep.compare(segmented, rotated))
+# print(rep.compare(segmented, rotated))
