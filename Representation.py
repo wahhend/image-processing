@@ -47,7 +47,7 @@ def represent_4_direction(image):
             # current 
 
         return_to_start = (start == current)
-        # print(current)
+        
     return representation
 
 def diff(current, next):
@@ -83,12 +83,12 @@ def compare(source, image):
     for rd in rotatedDiff:
         rotatedDiffCode += str(rd)
 
-    print("Segmentation image (Original)")
-    print("Chain Code :", originalChainCode)
-    print("Diff :", originalDiff)
+    # print("Segmentation image (Original)")
+    # print("Chain Code :", originalChainCode)
+    # print("Diff :", originalDiff)
 
-    print("Segmentation image (Rotated)")
-    print("Chain Code :", rotatedChainCode)
-    print("Diff :", rotatedDiff)
+    # print("Segmentation image (Rotated)")
+    # print("Chain Code :", rotatedChainCode)
+    # print("Diff :", rotatedDiff)
 
     return (rotatedDiffCode in originalDiffCode)
